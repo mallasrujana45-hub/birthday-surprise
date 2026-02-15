@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <title>Small Surprise for You 💖</title>
 
-  <!-- MOBILE FULL-SCREEN OPTIMIZATION -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <style>
     body {
@@ -34,15 +32,10 @@
       font-size: 16px;
       cursor: pointer;
     }
-    img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-    video {
+    img, video {
       width: 100%;
       border-radius: 12px;
-      margin-top: 20px;
+      margin-top: 15px;
     }
   </style>
 </head>
@@ -51,15 +44,17 @@
 
 <!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="07 - Yedemaina Sakhi.mp3?v=1" type="audio/mpeg">
+  <source src="07 - Yedemaina Sakhi.mp3" type="audio/mpeg">
 </audio>
 
+<!-- START SCREEN -->
 <div class="box" id="startBox">
-  <h2>💖 small surprise for you 💖</h2>
+  <h2>💖 Small Surprise for You 💖</h2>
   <p>Only special people can pass 😌</p>
   <button onclick="startTest()">Start Test</button>
 </div>
 
+<!-- QUESTION SCREEN -->
 <div class="box" id="questionBox" style="display:none;">
   <h3 id="question"></h3>
   <div id="extra"></div>
@@ -67,30 +62,29 @@
   <button onclick="answer(1)">Option 2</button>
 </div>
 
+<!-- FINAL SCREEN -->
 <div class="box" id="finalMessage" style="display:none;">
-  <!-- VIDEO CLIP -->
   <video controls>
-    <source src="finalvideo.mp4?v=1" type="video/mp4">
+    <source src="InShot_20260215_173020797.mp4" type="video/mp4">
   </video>
 
-  <!-- FINAL MESSAGE -->
-  <h2>Happy Birthday shars💖</h2>
+  <h2>Happy Birthday shars 💖</h2>
   <p>
-        Today is your day.<br><br>
+    Today is your day.<br><br>
 
-    Whatever we are right now,
+    Whatever we are right now,  
     I just wanted to wish you genuinely.<br><br>
 
-    You mattered to me,
-    the memories mattered,
+    You mattered to me,  
+    the memories mattered,  
     and the care was real.<br><br>
 
-    This isn’t to expect anything back —
-    only to hope you smile today,
-    feel calm,
+    This isn’t to expect anything back —  
+    only to hope you smile today,  
+    feel calm,  
     and feel appreciated.<br><br>
 
-    Wherever life takes you,
+    Wherever life takes you,  
     I wish you happiness 🤍
   </p>
 
@@ -98,50 +92,49 @@
 </div>
 
 <script>
-alert("JS is working");
 const questions = [
   {
     q: "When should we meet?",
     options: ["Very soon", "Whenever"],
     correct: 0,
-    msgRight: "Yayy 🥹 I was hoping you’d say that. Counting days already 💕",
-    msgWrong: "Hmm 😌 system says “soon” is the correct answer 😉"
+    msgRight: "Yayy 🥹 I was hoping you’d say that 💕",
+    msgWrong: "System says ‘soon’ is the right answer 😌"
   },
   {
     q: "How much do you like me?",
     options: ["More than you know", "Normal"],
     correct: 0,
-    msgRight: "Okay wow 😭💖 I felt that.",
-    msgWrong: "Lie detected 🚨 Try again 😏"
+    msgRight: "Okay wow 😭💖",
+    msgWrong: "Lie detected 🚨😏"
   },
   {
     q: "When did we take this photo?",
     options: ["30 December 2023", "31 December 2023"],
     correct: 0,
-    photo: "InShot_20260215_173020797.mp4?v=1",
-    msgRight: "Yayy 🥹 I remember this day perfectly! Such a special memory 💖",
-    msgWrong: "Oops 😅 Not this one! It was 5th November 2024 🫶"
+    photo: "Snapchat-502044123.mp4",
+    msgRight: "Yayy 🥹 Such a special memory 💖",
+    msgWrong: "Oops 😅 Not this one!"
   },
   {
     q: "When you see my name now, what do you feel?",
     options: ["A little smile 😊", "Mixed emotions 🤍"],
     correct: 1,
-    msgRight: "Even mixed feelings show something real 🤍"
-    msgWrong: "That smile means more than you know 🤍",
+    msgRight: "Even mixed feelings mean something real 🤍",
+    msgWrong: "That smile means more than you know 🤍"
   },
   {
     q: "Will you be my love of my life?",
     options: ["Forever", "No"],
     correct: 0,
-    msgRight: "Already are. No exit option available 💖",
-    msgWrong: "Error ❌ love status already locked 🔒"
+    msgRight: "Already are 💖 No escape 😌",
+    msgWrong: "Error ❌ Love already locked 🔒"
   }
 ];
 
 let current = 0;
 
 function startTest() {
-  document.getElementById("bgMusic").play();
+  document.getElementById("bgMusic").play().catch(()=>{});
   document.getElementById("startBox").style.display = "none";
   document.getElementById("questionBox").style.display = "block";
   showQuestion();
@@ -183,3 +176,4 @@ function restartTest() {
 
 </body>
 </html>
+  
