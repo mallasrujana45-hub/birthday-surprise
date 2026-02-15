@@ -2,129 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Small Surprise For You 🤍</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Small Surprise for You 💖</title>
+
+  <!-- MOBILE FULL-SCREEN OPTIMIZATION -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <style>
-    body { font-family: Arial, sans-serif; background:#fbeff5; text-align:center; padding:20px;}
-    .box { background:white; padding:20px; border-radius:15px; max-width:420px; margin:auto; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-    button { background:#ff7aa2; color:white; border:none; padding:10px 20px; margin:10px; border-radius:10px; font-size:16px; cursor:pointer;}
-    img, video { width:100%; border-radius:12px; margin-top:15px;}
-    .final-btn { background:#ddd; color:#444; font-size:14px;}
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fff0f6;
+      padding: 20px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #ff5fa2;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    video {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
   </style>
 </head>
+
 <body>
 
+<!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="07 - Yedemaina Sakhi.mp3?v=1" type="audio/mpeg">
 </audio>
 
-<!-- START SCREEN: Your and Her Photo -->
-<div class="box" id="start">
-  <h2>Hey 🤍</h2>
-  <p>Something special for you 💖</p>
-  <img src="yourphoto.jpg" alt="Our photo">
-  <img src="herphoto.jpg" alt="Her photo">
-  <button onclick="start()">Open</button>
+<div class="box" id="startBox">
+  <h2>💖 Small surprise for you 💖</h2>
+  <p>Only special people can pass 😌</p>
+  <button onclick="startTest()">Start Test</button>
 </div>
-
-<!-- QUIZ SCREEN -->
-<div class="box" id="quiz" style="display:none;">
-  <h3 id="question"></h3>
-  <div id="extra"></div>
-  <button onclick="answer(0)" id="b1"></button>
-  <button onclick="answer(1)" id="b2"></button>
-</div>
-
-<!-- END SCREEN: Final Video + Message -->
-<div class="box" id="end" style="display:none;">
-  <video controls>
-    <source src="finalvideo.mp4" type="video/mp4">
-  </video>
-
-  <h2>Happy Birthday 🤍</h2>
-  <p style="text-align:left; font-size:15px;">
-    Wishing you all the happiness today and always.<br><br>
-    I made this to remind you of our memories and special moments 🤍<br>
-    No pressure, just a little surprise 💖
-  </p>
-
-  <button class="final-btn" onclick="finalMessage()">
-    If you ever feel like talking…
-  </button>
-</div>
-
-<script>
-const questions = [
-  {
-    q: "Do you remember this moment?",
-    options: ["Yes 🤍", "I remember the feeling"],
-    photo: "photo1.jpg",
-    messages: ["Some moments never leave us 🤍", "Feelings last longer than memories 🤍"]
-  },
-  {
-    q: "When you see my name now, what do you feel?",
-    options: ["A small smile 😊", "Mixed emotions 🤍"],
-    photo: "",
-    messages: ["That smile means something 🤍", "Mixed feelings still show care 🤍"]
-  },
-  {
-    q: "Did you ever feel comfortable being yourself with me?",
-    options: ["Yes 🤍", "Most of the time"],
-    photo: "",
-    messages: ["That comfort meant a lot 🤍", "Those moments were genuine 🤍"]
-  },
-  {
-    q: "Looking at this photo, what comes first?",
-    options: ["A smile 😊", "A quiet memory 🤍"],
-    photo: "photo2.jpg",
-    messages: ["Your smile was always special 🤍", "Quiet memories stay deep 🤍"]
-  },
-  {
-    q: "What do you miss more?",
-    options: ["The talks 💬", "The comfort 🤍"],
-    photo: "",
-    messages: ["Our talks had warmth 🤍", "Comfort is precious 🤍"]
-  }
-];
-
-let i = 0;
-
-function start() {
-  document.getElementById("bgMusic").play();
-  document.getElementById("start").style.display = "none";
-  document.getElementById("quiz").style.display = "block";
-  show();
-}
-
-function show() {
-  let q = questions[i];
-  document.getElementById("question").innerText = q.q;
-  document.getElementById("b1").innerText = q.options[0];
-  document.getElementById("b2").innerText = q.options[1];
-
-  if (q.photo) {
-    document.getElementById("extra").innerHTML = `<img src="${q.photo}">`;
-  } else {
-    document.getElementById("extra").innerHTML = "";
-  }
-}
-
-function answer(choice) {
-  alert(questions[i].messages[choice]);
-  i++;
-  if (i < questions.length) {
-    show();
-  } else {
-    document.getElementById("quiz").style.display = "none";
-    document.getElementById("end").style.display = "block";
-  }
-}
-
-function finalMessage() {
-  alert("No expectations.\nNo pressure.\nJust know I’m here, wishing you well 🤍");
-}
-</script>
-
-</body>
-</html>
