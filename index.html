@@ -55,7 +55,130 @@
 </audio>
 
 <div class="box" id="startBox">
-  <h2>💖 Small surprise for you 💖</h2>
+  <h2>💖 Life Test 💖</h2>
   <p>Only special people can pass 😌</p>
   <button onclick="startTest()">Start Test</button>
 </div>
+
+<div class="box" id="questionBox" style="display:none;">
+  <h3 id="question"></h3>
+  <div id="extra"></div>
+  <button onclick="answer(0)">Option 1</button>
+  <button onclick="answer(1)">Option 2</button>
+</div>
+
+<div class="box" id="finalMessage" style="display:none;">
+  <!-- VIDEO CLIP -->
+  <video controls>
+    <source src="finalvideo.mp4?v=1" type="video/mp4">
+  </video>
+
+  <!-- FINAL MESSAGE -->
+  <h2>Happy Birthday shars💖</h2>
+  <p>
+        Today is your day.<br><br>
+
+    Whatever we are right now,
+    I just wanted to wish you genuinely.<br><br>
+
+    You mattered to me,
+    the memories mattered,
+    and the care was real.<br><br>
+
+    This isn’t to expect anything back —
+    only to hope you smile today,
+    feel calm,
+    and feel appreciated.<br><br>
+
+    Wherever life takes you,
+    I wish you happiness 🤍
+  </p>
+
+  <button onclick="restartTest()">Restart Test 🔁</button>
+</div>
+
+<script>
+const questions = [
+  {
+    q: "When should we meet?",
+    options: ["Very soon", "Whenever"],
+    correct: 0,
+    msgRight: "Yayy 🥹 I was hoping you’d say that. Counting days already 💕",
+    msgWrong: "Hmm 😌 system says “soon” is the correct answer 😉"
+  },
+  {
+    q: "How much do you like me?",
+    options: ["More than you know", "Normal"],
+    correct: 0,
+    msgRight: "Okay wow 😭💖 I felt that.",
+    msgWrong: "Lie detected 🚨 Try again 😏"
+  },
+  {
+    q: "When did we take this photo?",
+    options: ["30 December 2023", "31 December 2023"],
+    correct: 0,
+    photo: "InShot_20260215_173020797.mp4?v=1",
+    msgRight: "Yayy 🥹 I remember this day perfectly! Such a special memory 💖",
+    msgWrong: "Oops 😅 Not this one! It was 5th November 2024 🫶"
+  },
+  {
+    q: "When you see my name now, what do you feel?",
+    options: ["A little smile 😊", "Mixed emotions 🤍"],
+    correct: 1,
+    msgRight: "Even mixed feelings show something real 🤍"
+    msgWrong: "That smile means more than you know 🤍",
+  },
+  {
+    q: "Will you be my love of my life?",
+    options: ["Forever", "No"],
+    correct: 0,
+    msgRight: "Already are. No exit option available 💖",
+    msgWrong: "Error ❌ love status already locked 🔒"
+  }
+];
+
+let current = 0;
+
+function startTest() {
+  document.getElementById("bgMusic").play();
+  document.getElementById("startBox").style.display = "none";
+  document.getElementById("questionBox").style.display = "block";
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = questions[current];
+  document.getElementById("question").innerText = q.q;
+
+  const extra = document.getElementById("extra");
+  extra.innerHTML = "";
+
+  if (q.photo) {
+    extra.innerHTML = `<img src="${q.photo}">`;
+  }
+
+  const buttons = document.querySelectorAll("#questionBox button");
+  buttons[0].innerText = q.options[0];
+  buttons[1].innerText = q.options[1];
+}
+
+function answer(choice) {
+  const q = questions[current];
+  alert(choice === q.correct ? q.msgRight : q.msgWrong);
+
+  current++;
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    document.getElementById("questionBox").style.display = "none";
+    document.getElementById("finalMessage").style.display = "block";
+  }
+}
+
+function restartTest() {
+  location.reload();
+}
+</script>
+
+</body>
+</html>
